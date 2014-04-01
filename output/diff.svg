@@ -1,0 +1,56 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1200" height="194" onload="init(evt)" viewBox="0 0 1200 194" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs >
+	<linearGradient id="background" y1="0" y2="1" x1="0" x2="0" >
+		<stop stop-color="#eeeeee" offset="5%" />
+		<stop stop-color="#eeeeb0" offset="95%" />
+	</linearGradient>
+</defs>
+<style type="text/css">
+	.func_g:hover { stroke:black; stroke-width:0.5; }
+</style>
+<script type="text/ecmascript">
+<![CDATA[
+	var details;
+	function init(evt) { details = document.getElementById("details").firstChild; }
+	function s(info) { details.nodeValue = "Function: " + info; }
+	function c() { details.nodeValue = ' '; }
+]]>
+</script>
+<rect x="0.0" y="0" width="1200.0" height="194.0" fill="url(#background)"  />
+<text text-anchor="middle" x="600" y="24" font-size="17" font-family="Verdana" fill="rgb(0,0,0)"  >Flame Graph</text>
+<text text-anchor="" x="10" y="177" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="details" > </text>
+<g class="func_g" id="unix`sys_syscall" onmouseover="s('unix`sys_syscall (9,990 samples, 100.00%)')" onmouseout="c()">
+<title>unix`sys_syscall (9,990 samples, 100.00%)</title><rect x="10.0" y="129" width="1180.0" height="15.0" fill="rgb(224,19,20)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >unix`sys_syscall</text>
+</g>
+<g class="func_g" id="genunix`open" onmouseover="s('genunix`open (9,990 samples, 100.00%)')" onmouseout="c()">
+<title>genunix`open (9,990 samples, 100.00%)</title><rect x="10.0" y="113" width="1180.0" height="15.0" fill="rgb(214,192,52)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >genunix`open</text>
+</g>
+<g class="func_g" id="genunix`audit_falloc" onmouseover="s('genunix`audit_falloc (9,990 samples, 100.00%)')" onmouseout="c()">
+<title>genunix`audit_falloc (9,990 samples, 100.00%)</title><rect x="10.0" y="49" width="1180.0" height="15.0" fill="rgb(242,154,1)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >genunix`audit_falloc</text>
+</g>
+<g class="func_g" id="genunix`copen" onmouseover="s('genunix`copen (9,990 samples, 100.00%)')" onmouseout="c()">
+<title>genunix`copen (9,990 samples, 100.00%)</title><rect x="10.0" y="81" width="1180.0" height="15.0" fill="rgb(206,36,30)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >genunix`copen</text>
+</g>
+<g class="func_g" id="genunix`kmem_cache_alloc123" onmouseover="s('genunix`kmem_cache_alloc (9,990 samples, 100.00%)')" onmouseout="c()">
+<title>genunix`kmem_cache_alloc (9,990 samples, 100.00%)</title><rect x="10.0" y="33" width="1180.0" height="15.0" fill="rgb(252,135,6)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="43.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >genunix`kmem_cache_alloc</text>
+</g>
+<g class="func_g" id="" onmouseover="s('all (9,990 samples, 100%)')" onmouseout="c()">
+<title>all (9,990 samples, 100%)</title><rect x="10.0" y="145" width="1180.0" height="15.0" fill="rgb(205,153,39)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
+</g>
+<g class="func_g" id="genunix`openat" onmouseover="s('genunix`openat (9,990 samples, 100.00%)')" onmouseout="c()">
+<title>genunix`openat (9,990 samples, 100.00%)</title><rect x="10.0" y="97" width="1180.0" height="15.0" fill="rgb(224,23,24)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >genunix`openat</text>
+</g>
+<g class="func_g" id="genunix`falloc" onmouseover="s('genunix`falloc (9,990 samples, 100.00%)')" onmouseout="c()">
+<title>genunix`falloc (9,990 samples, 100.00%)</title><rect x="10.0" y="65" width="1180.0" height="15.0" fill="rgb(245,216,1)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >genunix`falloc</text>
+</g>
+</svg>
