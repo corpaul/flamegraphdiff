@@ -15,7 +15,7 @@ class Preprocessor():
             # reverse stacktrace
             st = st[::-1]
             st = ';'.join(st)
-            rewr[st] = [val[v], hashlib.md5(st)]
+            rewr[st] = [val[v]]
         self.writeCsv(rewr, "%s_rewr" % filename)
 
     def loadIOCSV(self, filename):
@@ -26,14 +26,13 @@ class Preprocessor():
             for line in reader:
                 st = line[1].strip()
                 val = int(line[2].strip())
-                cnt = int(line[3].strip())
                 values[st] = val
         return values
 
     def writeCsv(self, csv, filename):
         with open(filename, "w") as csvfile:
             for st in csv.keys():
-                csvfile.write("%s %d %s\n" % (st, csv[st][0], csv[st][1].hexdigest()))
+                csvfile.write("%s %d\n" % (st, csv[st][0]))
 
 
 if __name__ == '__main__':
@@ -47,4 +46,3 @@ if __name__ == '__main__':
 
     if sys.argv[2] == "IO":
         p.preprocessIO(sys.argv[1])
-

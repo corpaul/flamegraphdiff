@@ -4,9 +4,8 @@ from decimal import Decimal
 
 
 class CsvRecord():
-    def __init__(self, val, elemId, st):
+    def __init__(self, val, st):
         self.val = val
-        self.elemId = elemId
         self.st = st
 
 
@@ -20,15 +19,14 @@ class DiffFlameGraph():
             for line in reader:
                 st = line[0].strip()
                 val = int(line[1].strip())
-                elemId = line[2].strip()
-                values[st] = CsvRecord(val, elemId, st)
+                values[st] = CsvRecord(val, st)
         return values
 
     def diffCsv(self, values1, values2):
         values = {}
         for st in values1.keys():
             c = values1[st]
-            values[st] = CsvRecord(0, c.elemId, c.st)
+            values[st] = CsvRecord(0, c.st)
             if st in values2.keys():
                 values[st].val = values2[st].val - values1[st].val
             else:
@@ -38,7 +36,7 @@ class DiffFlameGraph():
         for st in values2.keys():
             if st not in values.keys():
                 c = values2[st]
-                values[st] = CsvRecord(0, c.elemId, c.st)
+                values[st] = CsvRecord(0, c.st)
                 values[st].val = values2[st].val
 
         return values
@@ -56,7 +54,7 @@ class DiffFlameGraph():
             for st in diffCsv:
                 c = diffCsv[st]
                 if c.val > 10000:
-                    csvfile.write("%s %d %s\n" % (st, c.val, c.elemId))
+                    csvfile.write("%s %d\n" % (st, c.val))
 
 if __name__ == '__main__':
 

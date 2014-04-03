@@ -322,7 +322,7 @@ my %Node;
 my %Tmp;
 
 sub flow {
-	my ($last, $this, $v, $elemId) = @_;
+	my ($last, $this, $v) = @_;
 
 	my $len_a = @$last - 1;
 	my $len_b = @$this - 1;
@@ -346,6 +346,9 @@ sub flow {
 		# a unique ID is constructed from "func;depth;etime";
 		# func-depth isn't unique, it may be repeated later.
 		$Node{"$k;$v"}->{stime} = delete $Tmp{$k}->{stime};
+		
+		# to identify nodes in different graphs they need to have consistent id's
+		# so we will generate the id based on the stack
 		$tmpId = "";
 		for ($i2 = $i; $i2 >= 0; $i2--)
 		{
@@ -375,14 +378,15 @@ my $time = 0;
 my $ignored = 0;
 foreach (sort @Data) {
 	chomp;
-	my ($stack, $samples, $elemId) = (/^(.*)\s+(\d+(?:\.\d*)?)\s+(.+)$/);
+	#my ($stack, $samples) = (/^(.*)\s+(\d+(?:\.\d*)?)\s+(.+)$/);
+	my ($stack, $samples) = (/^(.*)\s+(\d+(?:\.\d*)?)$/);
 	unless (defined $samples) {
 		++$ignored;
 		next;
 	}
 	$stack =~ tr/<>/()/;
 	
-	$last = flow($last, [ '', split ";", $stack ], $time, $elemId);
+	$last = flow($last, [ '', split ";", $stack ], $time);
 	
 	$time += $samples;	
 
@@ -390,7 +394,7 @@ foreach (sort @Data) {
 }
 
 
-flow($last, [], $time, "");
+flow($last, [], $time);
 
 
 	
