@@ -5,40 +5,61 @@
     </head>
     <body>
 	
-	<div style="float: left; width: 100%">	
+	<div style="float: left; width: 45%">	
 		Version 1:<br />	
-		<object data="version1.svg" type="image/svg+xml" id="version1" width="100%" height="100%"></object>
+		<object data="reportsOld.svg" type="image/svg+xml" id="version1" width="100%" height="100%"></object>
 	</div>
-	<div style="float: left;  width: 100%">
+	<div style="float: left;  width: 45%">
 		Version 2:<br />
-		<object data="version2.svg" type="image/svg+xml" id="version2" width="100%" height="100%"></object>
+		<object data="reportsNew.svg" type="image/svg+xml" id="version2" width="100%" height="100%"></object>
 	</div>
 
 	<div style="clear: left;  width: 100%">
 		Diff:<br />
-		<object data="diff.svg" type="image/svg+xml" id="diff" width="100%" height="100%"></object>
+		<object data="reports_diff.svg" type="image/svg+xml" id="diff" width="100%" height="100%"></object>
 	</div>
 
 
 	<script type="text/javascript">
-	window.onload = function(){
-		highlight("diff", "unix`sys_syscall");
-		highlight("version1", "unix`sys_syscall");
-		highlight("version2", "unix`sys_syscall");
-	}
-	
-	function highlight(svg, element)
+		
+	function getSvgs()
 	{
-		var a = document.getElementById(svg);
-		var svgDoc = a.contentDocument; //get the inner DOM of alpha.svg
+		return ["diff", "version1", "version2"];	
+	}
+
+	function highlight(element)
+	{
+		var svgs = getSvgs();		
+		
+		svgs.forEach(function(entry){
+			var a = document.getElementById(entry);
+			var svgDoc = a.contentDocument; //get the inner DOM of alpha.svg
 				
-		//setStroke(element, svg);
+			//setStroke(element, svg);
 	
-		var elem = svgDoc.getElementById(element);
-		   		
-		elem.style.setProperty("stroke", "black");
-		elem.style.setProperty("stroke-width", "0.5"); 
+			var elem = svgDoc.getElementById(element);
+			if(elem)
+			{		   		
+				elem.style.setProperty("stroke", "black");
+				elem.style.setProperty("stroke-width", "1"); 
+			}
+		});	
+	}
+
+	function unhighlight(element)
+	{
+		var svgs = getSvgs();
+		
+		svgs.forEach(function(entry){
+			var a = document.getElementById(entry);
+			var svgDoc = a.contentDocument; //get the inner DOM of alpha.svg
+				
+			//setStroke(element, svg);
 	
+			var elem = svgDoc.getElementById(element);
+			if(elem)
+				elem.style.setProperty("stroke-width", "0"); 
+		});	
 	}
 
 	

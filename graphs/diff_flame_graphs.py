@@ -3,6 +3,13 @@ import sys
 from decimal import Decimal
 
 
+class CsvRecord():
+    def __init__(self, val, elemId, st):
+        self.val = val
+        self.elemId = elemId
+        self.st = st
+
+
 class DiffFlameGraph():
 
     def loadCSV(self, filename):
@@ -13,21 +20,26 @@ class DiffFlameGraph():
             for line in reader:
                 st = line[0].strip()
                 val = int(line[1].strip())
-                values[st] = val
+                elemId = line[2].strip()
+                values[st] = CsvRecord(val, elemId, st)
         return values
 
     def diffCsv(self, values1, values2):
         values = {}
         for st in values1.keys():
+            c = values1[st]
+            values[st] = CsvRecord(0, c.elemId, c.st)
             if st in values2.keys():
-                values[st] = values2[st] - values1[st]
+                values[st].val = values2[st].val - values1[st].val
             else:
-                values[st] = -values1[st]
+                values[st].val = -(values1[st].val)
 
         # make sure all new keys are added to the graph as well
         for st in values2.keys():
             if st not in values.keys():
-                values[st] = values2[st]
+                c = values2[st]
+                values[st] = CsvRecord(0, c.elemId, c.st)
+                values[st].val = values2[st].val
 
         return values
 
@@ -35,14 +47,16 @@ class DiffFlameGraph():
         for st in values1.keys():
             if st not in values2.keys():
                 return False
-            if values1[st] != values2[st]:
+            if values1[st].val != values2[st].val:
                 return False
         return len(values1) == len(values2)
 
     def writeDiff(self, diffCsv, filename):
         with open(filename, "w") as csvfile:
             for st in diffCsv:
-                csvfile.write("%s %d\n" % (st, diffCsv[st]))
+                c = diffCsv[st]
+                if c.val > 10000:
+                    csvfile.write("%s %d %s\n" % (st, c.val, c.elemId))
 
 if __name__ == '__main__':
 

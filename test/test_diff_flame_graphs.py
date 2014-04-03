@@ -1,15 +1,15 @@
 import unittest
-from graphs.diff_flame_graphs import DiffFlameGraph
+from graphs.diff_flame_graphs import DiffFlameGraph, CsvRecord
 
 
 class TestPerformanceFunctions(unittest.TestCase):
 
     def testEqual(self):
         diff = DiffFlameGraph()
-        compare = {"a;b;c": 50, "a;b": int(-50)}
-        compare2 = {"a;b;c": 50, "a;b": int(-50)}
-        compare3 = {"a;b;c": 10, "a;b": int(-50)}
-        compare4 = {"a;": 50, "a;b": int(-50)}
+        compare = {"a;b;c": CsvRecord(50, "id1", "a;b;c"), "a;b": CsvRecord(int(-50), "id2", "a;b")}
+        compare2 = {"a;b;c": CsvRecord(50, "id1", "a;b;c"), "a;b": CsvRecord(int(-50), "id2", "a;b")}
+        compare3 = {"a;b;c": CsvRecord(10, "id1", "a;b;c"), "a;b": CsvRecord(int(-50), "id2", "a;b")}
+        compare4 = {"a;": CsvRecord(50, "id3", "a;"), "a;b": CsvRecord(int(-50), "id2", "a;b")}
         self.assertTrue(diff.equal(compare, compare2))
         self.assertFalse(diff.equal(compare, compare3))
         self.assertFalse(diff.equal(compare, compare4))
@@ -23,7 +23,7 @@ class TestPerformanceFunctions(unittest.TestCase):
 
         # a;b; is gone from version 2 so should be -50
         # a;b;c is new, so should be 50
-        compare = {"a;b;c": 50, "a;b": int(-50)}
+        compare = {"a;b;c": CsvRecord(50, "id1", "a;b;c"), "a;b": CsvRecord(int(-50), "id2", "a;b")}
         self.assertTrue(diff.equal(diffCsv, compare))
 
     def testWriteDiff(self):
