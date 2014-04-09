@@ -24,6 +24,7 @@ class DiffFlameGraph():
 
     def diffCsv(self, values1, values2):
         values = {}
+
         for st in values1.keys():
             c = values1[st]
             values[st] = CsvRecord(0, c.st)
@@ -53,8 +54,8 @@ class DiffFlameGraph():
         with open(filename, "w") as csvfile:
             for st in diffCsv:
                 c = diffCsv[st]
-                if c.val > 10000:
-                    csvfile.write("%s %d\n" % (st, c.val))
+                # if c.val > 0:
+                csvfile.write("%s %d\n" % (st, c.val))
 
 if __name__ == '__main__':
 
