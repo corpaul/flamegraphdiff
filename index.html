@@ -39,11 +39,19 @@
 <h3>
 <a name="how" class="anchor" href="#how"><span class="octicon octicon-link"></span></a>Usage instructions</h3>
 
-<p>what is..:</p>
+<p>flamegraphdiff can be installed by cloning the git repository and the submodules:</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<pre><code>$ git clone https://github.com/corpaul/flamegraphdiff.git --recursive
+</code></pre>
+
+<p>Generating a differential flame graph is easy! Simply run:</p>
+
+<pre><code>$ cd flamegraphdiff
+$ python graphs/diff_flame_graphs.py output/example_v1.txt output/example_v2.txt output/example_diff.txt
+$ cat output/example_v1.txt | FlameGraph/flamegraph.pl > output/example_v1.svg
+$ cat output/example_v2.txt | FlameGraph/flamegraph.pl > output/example_v2.svg
+$ cat output/example_diff.txt | FlameGraph/flamegraph.pl > output/example_diff.svg
+$ python graphs/generate_dfg_report.py output/example_v1.svg output/example_v2.svg output/example_diff.svg
 </code></pre>
 
 <h3>
