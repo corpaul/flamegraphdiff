@@ -51,8 +51,10 @@ $ python graphs/diff_flame_graphs.py output/example_v1.txt output/example_v2.txt
 $ cat output/example_v1.txt | FlameGraph/flamegraph.pl > output/example_v1.svg
 $ cat output/example_v2.txt | FlameGraph/flamegraph.pl > output/example_v2.svg
 $ cat output/example_diff.txt | FlameGraph/flamegraph.pl > output/example_diff.svg
-$ python graphs/generate_dfg_report.py output/example_v1.svg output/example_v2.svg output/example_diff.svg
+$ ./graphs/generate_dfg_report.sh example_v1.svg example_v2.svg example_diff.svg
 </code></pre>
+
+(note: this will generate output/dfg.html)
 
 <h3>
 <a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demonstration</h3>
