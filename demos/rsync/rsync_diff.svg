@@ -1,0 +1,44 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1200" height="130" onload="init(evt)" viewBox="0 0 1200 130" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs >
+	<linearGradient id="background" y1="0" y2="1" x1="0" x2="0" >
+		<stop stop-color="#eeeeee" offset="5%" />
+		<stop stop-color="#eeeeb0" offset="95%" />
+	</linearGradient>
+</defs>
+<style type="text/css">
+	.func_g:hover { stroke:black; stroke-width:0.5; }
+</style>
+<script type="text/ecmascript">
+<![CDATA[
+	var details;
+	function init(evt) { details = document.getElementById("details").firstChild; }
+	function s(info, id) { details.nodeValue = "Function: " + info; window.parent.highlight(id); }
+	function c(id) { details.nodeValue = ' '; window.parent.unhighlight(id); }
+]]>
+</script>
+<rect x="0.0" y="0" width="1200.0" height="130.0" fill="url(#background)"  />
+<text text-anchor="middle" x="600" y="24" font-size="17" font-family="Verdana" fill="rgb(0,0,0)"  >Flame Graph</text>
+<text text-anchor="" x="10" y="113" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="details" > </text>
+<g id=";md5_process;" class="func_g" onmouseover="s('md5_process (2,000 samples, 90.91%)',';md5_process;')" onmouseout="c(';md5_process;')">
+<title>md5_process (2,000 samples, 90.91%)</title><rect x="117.3" y="65" width="1072.7" height="15.0" fill="rgb(239,1,40)" rx="2" ry="2" />
+<text text-anchor="" x="120.272727272727" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >md5_process</text>
+</g>
+<g id=";main;" class="func_g" onmouseover="s('main (200 samples, 9.09%)',';main;')" onmouseout="c(';main;')">
+<title>main (200 samples, 9.09%)</title><rect x="10.0" y="65" width="107.3" height="15.0" fill="rgb(212,174,35)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >main</text>
+</g>
+<g id=";" class="func_g" onmouseover="s('all (2,200 samples, 100%)',';')" onmouseout="c(';')">
+<title>all (2,200 samples, 100%)</title><rect x="10.0" y="81" width="1180.0" height="15.0" fill="rgb(219,91,21)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  ></text>
+</g>
+<g id=";_nl_find_locale;setlocale;main;" class="func_g" onmouseover="s('_nl_find_locale (200 samples, 9.09%)',';_nl_find_locale;setlocale;main;')" onmouseout="c(';_nl_find_locale;setlocale;main;')">
+<title>_nl_find_locale (200 samples, 9.09%)</title><rect x="10.0" y="33" width="107.3" height="15.0" fill="rgb(242,131,20)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="43.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >_nl_find_locale</text>
+</g>
+<g id=";setlocale;main;" class="func_g" onmouseover="s('setlocale (200 samples, 9.09%)',';setlocale;main;')" onmouseout="c(';setlocale;main;')">
+<title>setlocale (200 samples, 9.09%)</title><rect x="10.0" y="49" width="107.3" height="15.0" fill="rgb(253,123,34)" rx="2" ry="2" />
+<text text-anchor="" x="13" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"  >setlocale</text>
+</g>
+</svg>
