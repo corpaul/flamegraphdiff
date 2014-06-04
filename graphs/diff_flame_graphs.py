@@ -1,6 +1,5 @@
 import csv
 import sys
-from decimal import Decimal
 
 
 class CsvRecord():
