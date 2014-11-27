@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<title>Differential Flame Graph</title>
+    </head>
+    <body>
+
+	<div style="float: left; width: 49%">
+		DFG1:<br />
+		<object data="dispersy_dfg1.svg" type="image/svg+xml" id="version1" width="100%" height="100%"></object>
+	</div>
+	<div style="float: right;  width: 49%">
+		DFG2:<br />
+		<object data="dispersy_dfg2.svg" type="image/svg+xml" id="version2" width="100%" height="100%"></object>
+	</div>
+
+	<div style="clear: left;  width: 100%">
+		DFG_diff:<br />
+		<object data="dispersy_dfg_diff.svg" type="image/svg+xml" id="diff" width="100%" height="100%"></object>
+	</div>
+
+
+	<script type="text/javascript">
+
+	function getSvgs()
+	{
+		return ["diff", "version1", "version2"];
+	}
+
+	function highlight(element)
+	{
+		var svgs = getSvgs();
+
+		svgs.forEach(function(entry){
+			var a = document.getElementById(entry);
+			var svgDoc = a.contentDocument; //get the inner DOM of alpha.svg
+
+			//setStroke(element, svg);
+
+			var elem = svgDoc.getElementById(element);
+			var details = svgDoc.getElementById("details").firstChild;
+			if(elem)
+			{
+				elem.style.setProperty("stroke", "black");
+				elem.style.setProperty("stroke-width", "1");
+				details.nodeValue = $(elem).find('title').text();
+			}
+		});
+	}
+
+	function unhighlight(element)
+	{
+		var svgs = getSvgs();
+
+		svgs.forEach(function(entry){
+			var a = document.getElementById(entry);
+			var svgDoc = a.contentDocument; //get the inner DOM of alpha.svg
+
+			//setStroke(element, svg);
+
+			var elem = svgDoc.getElementById(element);
+			var details = svgDoc.getElementById("details").firstChild;
+			if(elem)
+			{
+				elem.style.setProperty("stroke-width", "0");
+				details.nodeValue = ' ';
+			}
+		});
+	}
+
+	</script>
+    </body>
+</html>
