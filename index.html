@@ -44,17 +44,17 @@
 <pre><code>$ git clone https://github.com/corpaul/flamegraphdiff.git --recursive
 </code></pre>
 
-<p>Generating a differential flame graph is easy! Simply run:</p>
+<p>Generating a differential flame graph-set is easy! Simply run:</p>
 
 <pre><code>$ cd flamegraphdiff
-$ python graphs/diff_flame_graphs.py output/example_v1.txt output/example_v2.txt output/example_diff.txt
-$ cat output/example_v1.txt | FlameGraph/flamegraph.pl > output/example_v1.svg
-$ cat output/example_v2.txt | FlameGraph/flamegraph.pl > output/example_v2.svg
-$ cat output/example_diff.txt | FlameGraph/flamegraph.pl > output/example_diff.svg
-$ ./graphs/generate_dfg_report.sh example_v1.svg example_v2.svg example_diff.svg
+$ FlameGraph/difffolded.pl demos/rsync/rsync_v2.txt demos/rsync/rsync_v1.txt | FlameGraph/flamegraph.pl > demos/rsync/rsync_dfg1.svg 
+$ FlameGraph/difffolded.pl demos/rsync/rsync_v1.txt demos/rsync/rsync_v2.txt | FlameGraph/flamegraph.pl > demos/rsync/rsync_dfg2.svg 
+$ FlameGraph/difffolded.pl -d demos/rsync/rsync_v1.txt demos/rsync/rsync_v2.txt | FlameGraph/flamegraph.pl > demos/rsync/rsync_dfg_diff.svg 
+
+$ graphs/generate_dfg_report.sh rsync_dfg1.svg rsync_dfg2.svg rsync_dfg_diff.svg demos/rsync/
 </code></pre>
 
-(note: this will generate output/dfg.html)
+(note: this will generate demos/rsync/dfg-set.html)
 
 <h3>
 <a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demonstration</h3>
@@ -62,9 +62,9 @@ $ ./graphs/generate_dfg_report.sh example_v1.svg example_v2.svg example_diff.svg
 <p>Below you can find some demo's of flamegraphdiff.</p>
 
 <ul>
-	<li><a href="demos/rsync/rsync_diff.html">Rsync test suite (VISSOFT 2014 submission)
+	<li><a href="demos/rsync/dfg-set.html">Rsync test suite
 
-	<li><a href="demos/dispersy/dispersy_diff.html">Tribler I/O (VISSOFT 2014 submission)
+	<li><a href="demos/dispersy/dfg-set.html">Tribler I/O
 </ul>
         </section>
 
