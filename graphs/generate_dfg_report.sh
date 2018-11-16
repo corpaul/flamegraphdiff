@@ -10,7 +10,9 @@ fi
 
 OUTPUTDIR=$4
 
+IFLAG="-i" && [[ "$(uname)" == "Darwin" ]] && IFLAG="-i ''"
+
 cp graphs/dfg_template.html $OUTPUTDIR/dfg-set.html
-sed -i "s|%V1FILE%|$1|g" $OUTPUTDIR/dfg-set.html
-sed -i "s|%V2FILE%|$2|g" $OUTPUTDIR/dfg-set.html
-sed -i "s|%DIFFFILE%|$3|g" $OUTPUTDIR/dfg-set.html
+sed ${IFLAG} "s|%V1FILE%|$1|g" $OUTPUTDIR/dfg-set.html
+sed ${IFLAG} "s|%V2FILE%|$2|g" $OUTPUTDIR/dfg-set.html
+sed ${IFLAG} "s|%DIFFFILE%|$3|g" $OUTPUTDIR/dfg-set.html
